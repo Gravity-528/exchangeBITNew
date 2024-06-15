@@ -188,7 +188,7 @@ const ProductDetailsScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Initialize navigate
-  
+
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
@@ -209,9 +209,8 @@ const ProductDetailsScreen = () => {
 
   const handleAddToCart = async () => {
     try {
-        // Make sure to include credentials with the request
         const response = await axios.post("http://localhost:8000/api/v1/users/protectedRoute", {}, {
-            withCredentials: true, // Send cookies for authentication
+            withCredentials: true, 
         });
 
         const userId = response.data.data;
@@ -222,11 +221,9 @@ const ProductDetailsScreen = () => {
             return;
         }
 
-        // Establish WebSocket connection
         const ws = new WebSocket("ws://localhost:8000");
 
         ws.onopen = () => {
-            // Send initiate chat request
             ws.send(JSON.stringify({ type: "INITIATE_CHAT", productId, userId }));
         };
 
@@ -234,7 +231,6 @@ const ProductDetailsScreen = () => {
             const message = JSON.parse(event.data);
             if (message.type === "CHAT_INITIATED") {
                 const { chatId } = message;
-                // Redirect to chat page using navigate
                 navigate(`/${chatId}`);
             }
         };
