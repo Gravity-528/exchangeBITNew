@@ -98,6 +98,19 @@ const ChatPage = () => {
       }
     };
 
+    const fetchChatHistory = async () => {
+      try {
+        const response = await axios.post(`http://localhost:8000/api/v1/chats/${chatId}`, { userId }, {
+          withCredentials: true,
+        });
+
+        const chatData = response.data;
+        setMessages(chatData.messages);
+      } catch (error) {
+        console.error("Error fetching chat history:", error);
+      }
+    };
+
     const connectWebSocket = () => {
       ws.current = new WebSocket("ws://localhost:8000");
 
@@ -126,7 +139,10 @@ const ChatPage = () => {
       };
     };
 
-    fetchUserId(); 
+    fetchUserId();
+    if (userId) {
+      fetchChatHistory();
+    } 
     connectWebSocket();
 
     return () => {
@@ -134,7 +150,7 @@ const ChatPage = () => {
         ws.current.close();
       }
     };
-  }, [chatId, userId]); 
+  }, [chatId, userId]);
 
   const handleSendMessage = () => {
     if (inputMessage.trim()) {
@@ -146,7 +162,6 @@ const ChatPage = () => {
       }
     }
   };
-
 
   return (
     <ChatPageWrapper>
