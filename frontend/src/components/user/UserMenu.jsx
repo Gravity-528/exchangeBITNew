@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
-import Title from "../common/Title";
-import { breakpoints, defaultTheme } from "../../styles/themes/default";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import Title from '../common/Title';
+import { breakpoints, defaultTheme } from '../../styles/themes/default';
+import ProductListUser from '../product/ProductListUser'; // Import ProductListUser component
 
 const NavMenuWrapper = styled.nav`
   margin-top: 32px;
@@ -67,22 +68,22 @@ const NavMenuWrapper = styled.nav`
 
 const UserMenu = () => {
   const location = useLocation();
-  const [userDetail, setUser] = useState({ username: '' });
+  const [userDetail, setUserDetail] = useState({ username: '' });
 
   useEffect(() => {
-    const fetchDetail = async () => {
+    const fetchUserDetail = async () => {
       try {
         const response = await axios.post(`/api/v1/users/FindUser`, {}, {
           withCredentials: true,
         });
-        setUser(response.data.data);
+        setUserDetail(response.data.data);
       } catch (error) {
         console.log(error);
-        alert("There is some error, please try again later!");
+        alert('There is some error, please try again later!');
       }
     };
 
-    fetchDetail();
+    fetchUserDetail();
   }, []);
 
   return (
@@ -131,9 +132,6 @@ const UserMenu = () => {
             </Link>
           </li>
           <li className="nav-menu-item">
-            
-          </li>
-          <li className="nav-menu-item">
             <Link to="/" className={`nav-menu-link flex items-center`}>
               <span className="nav-link-icon flex items-center justify-center">
                 <img src="./assets/icons/ac_sign_out.svg" alt="" />
@@ -143,8 +141,18 @@ const UserMenu = () => {
               </span>
             </Link>
           </li>
+          
         </ul>
       </NavMenuWrapper>
+
+      {/* Render content based on the active link */}
+      {location.pathname === '/userProduct' && (
+        <div>
+          {/* Your Ads content */}
+          <h2>Your Ads</h2>
+          <ProductListUser />
+        </div>
+      )}
     </div>
   );
 };
