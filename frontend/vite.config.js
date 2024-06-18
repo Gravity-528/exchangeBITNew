@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       
-      "/api": "http://localhost:8000",
+      "/api": "https://exchangebitnewbackend.onrender.com",
     },
   },
   plugins: [react()],
