@@ -231,11 +231,12 @@ const ProductDetailsScreen = () => {
             console.log("Error in authentication");
             alert("Error in authentication, please log in again.");
             return;
-        }
+        } 
 
         const ws = new WebSocket("wss://exchangebitnewbackend.onrender.com/ws");
-
+        
         ws.onopen = () => {
+          console.log("sent?");
             ws.send(JSON.stringify({ type: "INITIATE_CHAT", productId, userId }));
         };
 
