@@ -114,7 +114,7 @@
 // //         formData.append('media',image);
 // //     }
 
-// //     const response=await axios.put(`http://localhost:8000/api/v1/products/${product._id}`,formData,{
+// //     const response=await axios.put(`https://localhost:8000/api/v1/products/${product._id}`,formData,{
 // //         headers:{
 // //             'Content-Type':'multipart/form-data'
 // //         },

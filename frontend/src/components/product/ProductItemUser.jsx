@@ -78,7 +78,7 @@
 //   const handleDelete = async () => {
 //     if (window.confirm('Are you sure you want to delete this product?')) {
 //       try {
-//         await axios.delete(`http://localhost:8000/api/v1/products/${product._id}`, {
+//         await axios.delete(`https://localhost:8000/api/v1/products/${product._id}`, {
 //           withCredentials: true,
 //         });
 //         alert('Product deleted successfully.');
@@ -92,7 +92,7 @@
 
 //   const handleMarkAsSold = async () => {
 //     try {
-//       await axios.patch(`http://localhost:8000/api/v1/products/${product._id}`, 
+//       await axios.patch(`https://localhost:8000/api/v1/products/${product._id}`, 
         
 //        {
 //         withCredentials: true,

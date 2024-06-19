@@ -86,7 +86,7 @@
     
 //       const FetchPoductById=async()=>{
 //         try{
-//          const productResponse=await axios.get(`http://localhost:8000/api/v1/products/${editid}`);
+//          const productResponse=await axios.get(`https://localhost:8000/api/v1/products/${editid}`);
 
 //          const Product=productResponse.data;
 //          console.log(Product);
@@ -123,7 +123,7 @@
 //         formData.append('newMedia',image);
 //     }
 
-//     const response=await axios.put(`http://localhost:8000/api/v1/products/${editid}`,formData,{
+//     const response=await axios.put(`https://localhost:8000/api/v1/products/${editid}`,formData,{
 //         headers:{
 //             'Content-Type':'multipart/form-data'
 //         },
