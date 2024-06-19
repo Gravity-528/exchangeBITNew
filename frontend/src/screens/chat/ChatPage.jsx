@@ -119,7 +119,7 @@ const ChatPage = () => {
     };
 
     const connectWebSocket = () => {
-      ws.current = new WebSocket("ws://localhost:8000");
+      ws.current = new WebSocket("wss://exchangebitnewbackend.onrender.com/ws");
 
       ws.current.onopen = () => {
         console.log('WebSocket connection opened');

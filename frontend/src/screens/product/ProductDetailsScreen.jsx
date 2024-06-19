@@ -233,7 +233,7 @@ const ProductDetailsScreen = () => {
             return;
         }
 
-        const ws = new WebSocket("ws://localhost:8000");
+        const ws = new WebSocket("wss://exchangebitnewbackend.onrender.com/ws");
 
         ws.onopen = () => {
             ws.send(JSON.stringify({ type: "INITIATE_CHAT", productId, userId }));
