@@ -101,9 +101,9 @@ const Sidebar = () => {
           <div className="brand-img-wrap flex items-center justify-center">
             <img className="site-brand-img" src={staticImages.logo} />
           </div>
-          <span className="site-brand-text text-outerspace">ExchangeBit</span>
+          <span className="site-brand-text text-outerspace">exchBIT</span>
         </SiteBrandWrapper>
-        <form className="sidenav-search-form">
+        {/* <form className="sidenav-search-form"> */}
           {/* <InputGroupWrapper className="input-group">
             <span className="input-icon flex items-center justify-center text-xl text-gray">
               <i className="bi bi-search"></i>
@@ -114,7 +114,7 @@ const Sidebar = () => {
               placeholder="Search"
             /> 
           </InputGroupWrapper> */}
-        </form>
+        {/* </form> */}
         <ul className="sidenav-menu-list grid">
           {sideMenuData?.map((menu) => (
             <li key={menu.id}>
