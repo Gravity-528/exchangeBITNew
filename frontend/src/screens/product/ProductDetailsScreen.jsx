@@ -223,6 +223,7 @@ const ProductDetailsScreen = () => {
             withCredentials: true, 
         });
 
+        
         const userId = response.data.data;
 
         if (!userId) {
